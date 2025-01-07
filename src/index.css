@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
+  /* background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255)); */
   display: flex;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   height: 100vh;
@@ -22,10 +22,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #fff;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: white;
+  color: black;
 }
 button:hover {
   border-color: #646cff;
@@ -63,3 +63,34 @@ a {
   font-weight: 800;
   text-decoration: none;
 }
+
+.scene {
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+.game-over-message {
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.character {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+.character.show {
+  opacity: 1;
+}
+
