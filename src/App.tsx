@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
-import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useEffect } from "react";
+// import type { Schema } from "../amplify/data/resource";
+// import { generateClient } from "aws-amplify/data";
+// import { useAuthenticator } from '@aws-amplify/ui-react';
 import TakeshiImage from './assets/takeshi-removebg-preview.png'
 import ReiImage from './assets/rei-removebg-preview.png'
 import YukiImage from './assets/yuki-removebg-preview.png'

@@ -3,7 +3,6 @@ import { Scene } from '../models/SceneModel';
 import DialogueBox from './DialogueBox';
 import NextButton from './NextButton';
 import Character from './Character';
-import Scene1 from '../assets/scene1.png'
 
 interface SceneProps {
   scenes: Scene[];
