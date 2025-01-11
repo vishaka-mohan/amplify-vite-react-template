@@ -93,4 +93,83 @@ a {
 .character.show {
   opacity: 1;
 }
+.notebook-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
 
+.notebook-icon {
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.notebook-icon:hover {
+  background-color: #e0e0e0;
+}
+
+.notebook {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  width: 400px;
+  height: 500px;
+  background: linear-gradient(to bottom, #f7ecd0, #f4e3c1);
+  border: 2px solid #8b5e3c;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow-y: auto;
+  padding: 20px;
+  font-family: 'Caveat', cursive; /* Use a cursive font for an old-style feel */
+  z-index: 1001;
+}
+
+.notebook:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    to right,
+    #8b5e3c,
+    #8b5e3c 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+.notebook-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4a3c28;
+  padding: 10px;
+}
+
+.notebook-content p {
+  margin: 10px 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #8b5e3c;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #c57a44;
+}
