@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import type { Schema } from "../amplify/data/resource";
 // import { generateClient } from "aws-amplify/data";
 import { useAuthenticator } from '@aws-amplify/ui-react';
@@ -151,6 +151,13 @@ const scenes: any[] = [
     ],
     true
   ),
+  {
+    type: 'voice-puzzle', // Custom type for the puzzle scene
+    backgroundImage: './scene_9.png',
+    textToAdd: 'Only those who honor the spirit in its native tongue shall pass.',
+
+    showNotebook: true
+  },
   new Scene(
     'scene10',
     './scene_10.png',

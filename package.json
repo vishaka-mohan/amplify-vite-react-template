@@ -14,7 +14,11 @@
     "@aws-amplify/ui-react": "^6.5.5",
     "@aws-amplify/ui-react-storage": "^3.6.1",
     "@aws-sdk/client-polly": "^3.723.0",
+    "@aws-sdk/client-textract": "^3.726.1",
+    "@aws-sdk/client-transcribe": "^3.726.1",
+    "@aws-sdk/client-translate": "^3.726.1",
     "aws-amplify": "^6.12.0",
+    "dotenv": "^16.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

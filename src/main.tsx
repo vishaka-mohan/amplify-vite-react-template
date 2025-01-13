@@ -8,10 +8,10 @@ import outputs from "../amplify_outputs.json";
 import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure(outputs);
-// Amplify.configure({
-//   ...Amplify.getConfig(),
-//   Predictions: outputs.custom.Predictions,
-// });
+Amplify.configure({
+  ...Amplify.getConfig(),
+  Predictions: outputs.custom.Predictions,
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

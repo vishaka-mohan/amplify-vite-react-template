@@ -6,6 +6,7 @@ import Character from './Character';
 import { downloadData } from 'aws-amplify/storage';
 import Notebook from './Notebook';
 import PuzzleDrawingScene from './PuzzleDrawingScene';
+import VoicePuzzleScene from './VoicePuzzleScene';
 
 interface SceneProps {
   scenes: any[];
@@ -22,7 +23,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
   
 
   const currentScene = scenes[currentSceneIndex];
-  const isPuzzleScene = currentScene.type === 'puzzle';
+  const isPuzzleScene = currentScene.type === 'puzzle' || currentScene.type === 'voice-puzzle';
   //const { backgroundImage, characters, dialogues, showNotebook } = currentScene;
 
  
@@ -67,7 +68,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
     //     }
     // };
     const handleNext = () => {
-        if (currentScene.type === 'puzzle') {
+        if (currentScene.type === 'puzzle' || currentScene.type === 'voice-puzzle') {
           // For puzzle scenes, skip directly to the next scene
           if (!isLastScene) {
             setFadeClass('fade-out');
@@ -181,6 +182,17 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
         correctAnswer={currentScene.correctAnswer}
         onCorrectAnswer={handleNext}
       />
+        </div>
+      
+    );
+  }
+
+  if (currentScene.type === 'voice-puzzle') {
+    return (
+        <div className={`scene ${fadeClass}`} style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh', width: '100vw'}}>
+            {showNotebook ? <Notebook content={notebookContent} /> : <></>} 
+            <h1 style={{color: 'white'}}>{textToAdd}</h1>
+            <VoicePuzzleScene puzzle={currentScene} onComplete={handleNext}/>
         </div>
       
     );
