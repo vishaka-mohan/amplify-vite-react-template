@@ -10,16 +10,42 @@ import BlacksmithImage from './assets/blacksmith Background Removed.png'
 import KaedeImage from './assets/kaede-removebg-preview.png'
 import HaruImage from './assets/haru Background Removed.png'
 import OldVillagerImage from './assets/oldvillager-removebg-preview.png'
+import NarratorImage from './assets/narrator.png'
+
 import wallpaperImage from './assets/wallpaper.png'
 
 import { Scene } from './models/SceneModel';
 import { Character } from './models/CharacterModel';
 import SceneComponent from './components/Scene';
 
+import { useEffect } from 'react';
+
+
+
 
 
 
 const scenes: any[] = [
+  new Scene(
+    'Scene_Intro',
+    './intro.png',
+    [
+      new Character('char1', 'Narrator', NarratorImage, { x: 30, y: 250 }, true)
+    ],
+    [
+      { characterId: 'char1', text: 'Every winter, as the first snow blankets the village, the Frost Festival begins. A celebration of the season’s beauty, a time for joy and togetherness… But also, a time of whispers.', dialoguePath: 'sceneIntro/dialogue_1.mp3' },
+
+      { characterId: 'char1', text: 'For centuries, stories of the Spirit of Frost have shaped this village’s traditions. Some say the Spirit watches over the festival, bestowing its blessing. Others whisper of strange occurrences… unexplained disappearances, fleeting shadows, and an icy chill that lingers long after the snow melts.', dialoguePath: 'sceneIntro/dialogue_2.mp3' },
+
+      { characterId: 'char1', text: 'But the heart of this story lies in the people. The villagers each hold their secrets—some kind, some cunning, and some… dangerous. To uncover the truth, you must walk among them, learn their stories, and earn their trust..', dialoguePath: 'sceneIntro/dialogue_3.mp3' },
+
+      { characterId: 'char1', text: 'Throughout your journey, you’ll face puzzles that test your wits, riddles that demand your cunning, and decisions that could change the course of this tale forever. Every clue brings you closer to the truth… or perhaps, further from it.', dialoguePath: 'sceneIntro/dialogue_4.mp3' },
+
+      { characterId: 'char1', text: 'But I’ve said too much already. Some secrets are meant to be uncovered, not told. So, step into the frost, traveler. The festival awaits… and so does its truth.', dialoguePath: 'sceneIntro/dialogue_5.mp3' },
+
+    ],
+    false
+  ),
   new Scene(
     'Scene_0',
     './scene_0.png',
@@ -171,9 +197,9 @@ const scenes: any[] = [
     'scene10',
     './scene_10.png',
     [
-      new Character('char1', 'Rei', ReiImage, { x: 10, y: 250 },false),
-      new Character('char2', 'Yuki', YukiImage, { x: 1300, y: 450 },true),
-      new Character('char3', 'Haru', HaruImage, { x: 1300, y: 50 },true),
+      new Character('char1', 'Rei', ReiImage, { x: 10, y: 250 },true),
+      new Character('char2', 'Yuki', YukiImage, { x: 1300, y: 450 },false),
+      new Character('char3', 'Haru', HaruImage, { x: 1300, y: 50 },false),
     ],
     [
       { characterId: 'char2', text: 'We found Rei!! Rei, how did you end up here!?', dialoguePath: 'scene10/dialogue1.mp3' },
@@ -205,9 +231,9 @@ const scenes: any[] = [
     'scene12',
     './scene_12.png',
     [
-      new Character('char1', 'Rei', ReiImage, { x: 70, y: 250 },true),
-      new Character('char2', 'Yuki', YukiImage, { x: 550, y: 250 },true),
-      new Character('char3', 'OldVillager', OldVillagerImage, { x: 1000, y: 250 },false),
+      new Character('char1', 'Rei', ReiImage, { x: 10, y: 50 },true),
+      new Character('char2', 'Yuki', YukiImage, { x: 10, y: 450 },true),
+      new Character('char3', 'OldVillager', OldVillagerImage, { x: 1300, y: 250 },false),
     ],
     [
       { characterId: 'char3', text: 'What is this chatter about, people are talking about the snow spirit? Was all this just a story?', dialoguePath: 'scene12/dialogue1.mp3' },
@@ -220,6 +246,23 @@ const scenes: any[] = [
 
 
 function App() {
+
+  useEffect(() => {
+        // Reset state when the scene changes
+        const bgaudio = new Audio('./bgm.mp4'); // Replace with your audio file URL or blob
+        // Set the loop property to true
+        bgaudio.loop = true;
+        bgaudio.volume = 0.3;
+        // Play the audio
+        bgaudio.play();
+
+        // Cleanup function to pause audio when component unmounts
+        return () => {
+            bgaudio.pause();
+            bgaudio.currentTime = 0;
+        };
+}, []);
+
   const { user, signOut } = useAuthenticator();
   const [isGameStarted, setIsGameStarted] = useState(false);
 

@@ -108,16 +108,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
 
 
   useEffect(() => {
-    
-    
-    // Reset state when the scene changes
-    const bgaudio = new Audio('./bgm.mp4'); // Replace with your audio file URL or blob
 
-    // Set the loop property to true
-    bgaudio.loop = true;
-    bgaudio.volume = 0.3;
-    // Play the audio
-    bgaudio.play();
 
     async function preloadAudioFiles() {
         const urls: string[] = [];
@@ -152,8 +143,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
 
     return () => {
         clearTimeout(characterTimer);
-        bgaudio.pause()
-        bgaudio.currentTime = 0;
+
     }
 
   }, [currentSceneIndex]);
