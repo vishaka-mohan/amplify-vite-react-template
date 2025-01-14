@@ -173,3 +173,47 @@ a {
 .close-button:hover {
   color: #c57a44;
 }
+
+
+
+
+.number-puzzle-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 1rem;
+}
+.input-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.fibonacci-input {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #8b0000; /* Dark red border */
+  border-radius: 0.5rem;
+  background-color: #fffaf0; /* Ivory background */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.verify-button {
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #8b0000; /* Dark red */
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.verify-button:hover{
+  background-color: #a52a2a; /* Brownish red */
+}

@@ -7,6 +7,7 @@ import { downloadData } from 'aws-amplify/storage';
 import Notebook from './Notebook';
 import PuzzleDrawingScene from './PuzzleDrawingScene';
 import VoicePuzzleScene from './VoicePuzzleScene';
+import NumberPuzzleScene from './NumberPuzzleScene';
 
 interface SceneProps {
   scenes: any[];
@@ -23,7 +24,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
   
 
   const currentScene = scenes[currentSceneIndex];
-  const isPuzzleScene = currentScene.type === 'puzzle' || currentScene.type === 'voice-puzzle';
+  const isPuzzleScene = currentScene.type === 'puzzle' || currentScene.type === 'voice-puzzle' || currentScene.type === 'number-puzzle';
   //const { backgroundImage, characters, dialogues, showNotebook } = currentScene;
 
  
@@ -68,7 +69,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
     //     }
     // };
     const handleNext = () => {
-        if (currentScene.type === 'puzzle' || currentScene.type === 'voice-puzzle') {
+        if (currentScene.type === 'puzzle' || currentScene.type === 'voice-puzzle' || currentScene.type === 'number-puzzle') {
           // For puzzle scenes, skip directly to the next scene
           if (!isLastScene) {
             setFadeClass('fade-out');
@@ -193,6 +194,17 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
             {showNotebook ? <Notebook content={notebookContent} /> : <></>} 
             <h1 style={{color: 'white'}}>{textToAdd}</h1>
             <VoicePuzzleScene puzzle={currentScene} onComplete={handleNext}/>
+        </div>
+      
+    );
+  }
+
+  if (currentScene.type === 'number-puzzle') {
+    return (
+        <div className={`scene ${fadeClass}`} style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh', width: '100vw'}}>
+            {showNotebook ? <Notebook content={notebookContent} /> : <></>} 
+            <h2 style={{color: 'white'}}>{textToAdd}</h2>
+            <NumberPuzzleScene onNext={handleNext}/>
         </div>
       
     );

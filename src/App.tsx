@@ -40,6 +40,15 @@ const scenes: any[] = [
     ],
     false
   ),
+  {
+    type: 'number-puzzle', // Custom type for the puzzle scene
+    backgroundImage: './scene_0.png',
+    images: [
+      './im5.png'
+    ],
+    textToAdd: 'In the frost\'s embrace, balance lies in the sum of two. Begin with one, let it grow anew. Your task is to find the correct sequence of 4 numbers. enter it in the space given below',
+    showNotebook: false
+  },
   new Scene(
     'scene2',
     './scene_2.png',
