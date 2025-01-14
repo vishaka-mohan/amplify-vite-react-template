@@ -14,7 +14,7 @@ const CharacterComponent: React.FC<CharacterProps> = ({ character }) => {
         position: 'absolute',
         left: character.position.x,
         top: character.position.y,
-        width: '25%', // Image width is 10% of the parent container's width
+        width: '20%', // Image width is 10% of the parent container's width
         height: 'auto'
       }}
     />

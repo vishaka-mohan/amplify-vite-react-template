@@ -10,7 +10,7 @@ import BlacksmithImage from './assets/blacksmith Background Removed.png'
 import KaedeImage from './assets/kaede-removebg-preview.png'
 import HaruImage from './assets/haru Background Removed.png'
 import OldVillagerImage from './assets/oldvillager-removebg-preview.png'
-
+import wallpaperImage from './assets/wallpaper.png'
 
 import { Scene } from './models/SceneModel';
 import { Character } from './models/CharacterModel';
@@ -24,9 +24,9 @@ const scenes: any[] = [
     'Scene_0',
     './scene_0.png',
     [
-      new Character('char1', 'Yuki', YukiImage, { x: 70, y: 350 }),
-      new Character('char2', 'Haru', HaruImage, { x: 550, y: 350 }),
-      new Character('char3', 'Rei', ReiImage, { x: 1000, y: 350 }),
+      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 }, true),
+      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 450 },false),
+      new Character('char3', 'Rei', ReiImage, { x: 1300, y: 50 },false),
     ],
     [
       { characterId: 'char1', text: 'The journey was too tiresome, but I am super excited for the Frost festival!', dialoguePath: 'scene1/dialogue1.mp3' },
@@ -53,8 +53,8 @@ const scenes: any[] = [
     'scene2',
     './scene_2.png',
     [
-      new Character('char1', 'Innkeeper', InnkeeperImage, { x: 70, y: 250 }),
-      new Character('char2', 'OldVillager', OldVillagerImage, { x: 1000, y: 250 })
+      new Character('char1', 'Innkeeper', InnkeeperImage, { x: 10, y: 250 },true),
+      new Character('char2', 'OldVillager', OldVillagerImage, { x: 1300, y: 250 },false)
     ],
     [
       { characterId: 'char1', text: 'The frost festival is finally here, I do not feel too good about this.', dialoguePath: 'scene2/dialogue1.mp3'},
@@ -73,8 +73,8 @@ const scenes: any[] = [
     'Scene3',
     './scene_3.png',
     [
-      new Character('char1', 'Blacksmith', BlacksmithImage, { x: 70, y: 250 }),
-      new Character('char2', 'Rei', ReiImage, { x: 1000, y: 250 })
+      new Character('char1', 'Blacksmith', BlacksmithImage, { x: 10, y: 250 },true),
+      new Character('char2', 'Rei', ReiImage, { x: 1300, y: 250 },false)
     ],
     [
       { characterId: 'char2', text: 'I was looking for some answers.. do you believe that the so-called frost spirit is real?', dialoguePath: 'scene3/dialogue1.mp3' },
@@ -89,9 +89,9 @@ const scenes: any[] = [
     'scene4',
     './scene_4.png',
     [
-      new Character('char1', 'Yuki', YukiImage, { x: 70, y: 250 }),
-      new Character('char2', 'Haru', HaruImage, { x: 550, y: 250 }),
-      new Character('char3', 'InnKeeper', InnkeeperImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 50 },true),
+      new Character('char2', 'Haru', HaruImage, { x: 10, y: 450 },true),
+      new Character('char3', 'InnKeeper', InnkeeperImage, { x: 1300, y: 250 },false),
       
     ],
     [
@@ -107,8 +107,8 @@ const scenes: any[] = [
     'scene5',
     './scene_5.png',
     [
-      new Character('char1', 'Yuki', YukiImage, { x: 70, y: 250 }),
-      new Character('char2', 'Haru', HaruImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 },true),
+      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 250 },false),
     ],
     [
       { characterId: 'char1', text: 'Looks like he did not come back.', dialoguePath: 'scene5/dialogue1.mp3' },
@@ -121,8 +121,8 @@ const scenes: any[] = [
     'scene6',
     './scene_6.png',
     [
-      new Character('char1', 'Yuki', YukiImage, { x: 70, y: 250 }),
-      new Character('char2', 'Haru', HaruImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 },true),
+      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 250 },false),
     ],
     [
       { characterId: 'char1', text: 'Rei had stuff written in this notebook about this shrine and the village... So he is here because he wants to find his old friend. This place looks so creepy. I have a very bad feeling about this!', dialoguePath: 'scene6/dialogue1.mp3' },
@@ -146,8 +146,8 @@ const scenes: any[] = [
     'scene8',
     './scene_8.png',
     [
-      new Character('char1', 'Yuki', YukiImage, { x: 550, y: 250 }),
-      new Character('char2', 'Haru', HaruImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 },true),
+      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 250 },false),
     ],
     [
       { characterId: 'char1', text: 'This is such a dark chamber. Look around, there are so many books lying around!', dialoguePath: 'scene8/dialogue1.mp3' },
@@ -171,9 +171,9 @@ const scenes: any[] = [
     'scene10',
     './scene_10.png',
     [
-      new Character('char1', 'Rei', ReiImage, { x: 70, y: 250 }),
-      new Character('char2', 'Yuki', YukiImage, { x: 550, y: 250 }),
-      new Character('char3', 'Haru', HaruImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Rei', ReiImage, { x: 10, y: 250 },false),
+      new Character('char2', 'Yuki', YukiImage, { x: 1300, y: 450 },true),
+      new Character('char3', 'Haru', HaruImage, { x: 1300, y: 50 },true),
     ],
     [
       { characterId: 'char2', text: 'We found Rei!! Rei, how did you end up here!?', dialoguePath: 'scene10/dialogue1.mp3' },
@@ -188,9 +188,9 @@ const scenes: any[] = [
     'scene11',
     './scene_6.png',
     [
-      new Character('char1', 'Rei', ReiImage, { x: 70, y: 250 }),
-      new Character('char2', 'Kaede', KaedeImage, { x: 550, y: 250 }),
-      new Character('char3', 'Takeshi', TakeshiImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Rei', ReiImage, { x: 10, y: 250 },true),
+      new Character('char2', 'Kaede', KaedeImage, { x: 1300, y: 450 },false),
+      new Character('char3', 'Takeshi', TakeshiImage, { x: 1300, y: 50 },false),
     ],
     [
       { characterId: 'char1', text: 'We have found the truth! Let us leave the shrine.', dialoguePath: 'scene11/dialogue1.mp3' },
@@ -205,9 +205,9 @@ const scenes: any[] = [
     'scene12',
     './scene_12.png',
     [
-      new Character('char1', 'Rei', ReiImage, { x: 70, y: 250 }),
-      new Character('char2', 'Yuki', YukiImage, { x: 550, y: 250 }),
-      new Character('char3', 'OldVillager', OldVillagerImage, { x: 1000, y: 250 }),
+      new Character('char1', 'Rei', ReiImage, { x: 70, y: 250 },true),
+      new Character('char2', 'Yuki', YukiImage, { x: 550, y: 250 },true),
+      new Character('char3', 'OldVillager', OldVillagerImage, { x: 1000, y: 250 },false),
     ],
     [
       { characterId: 'char3', text: 'What is this chatter about, people are talking about the snow spirit? Was all this just a story?', dialoguePath: 'scene12/dialogue1.mp3' },
@@ -232,22 +232,80 @@ function App() {
   return (
     <main>
 
+
       
       {!isGameStarted ? (
-        <div>
-          <h1>Welcome {user?.signInDetails?.loginId}</h1>
-  <button onClick={startGame} className="play-button">
-    Play
+        <div className="start-page" style={{
+          background: `url(${wallpaperImage})`,
+          backgroundSize: 'cover',
+          height: '100vh',
+          width: '100vw',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+
+<div style={{ position: 'absolute', top: '20px', right: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+  <h4 style={{color:"white"}}>
+    {user?.signInDetails?.loginId}
+  </h4>
+  <button 
+    onClick={signOut}
+    style={{
+      padding: '8px 16px',
+      background: 'linear-gradient(to right,rgb(186, 148, 146),rgb(202, 24, 24))',
+      color: '#1a1a1a',
+      border: '2px solidrgb(152, 18, 3)', 
+      borderRadius: '20px',
+      cursor: 'pointer'
+    }}
+  >
+    Sign out
   </button>
-  <button onClick={signOut}>Sign out</button>
-</div>       
+</div>         
+
+ <h1 style={{
+            fontSize: '4rem',
+            color: '#fff',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+            marginBottom: '2rem'
+          }}>
+            Yuki No Kage
+          </h1>
+          <button 
+            onClick={startGame}
+            style={{
+              padding: '1.2rem 3rem',
+              fontSize: '1.4rem',
+              background: 'linear-gradient(to right,rgb(6, 111, 160), #ffffff)',
+              color: '#1a1a1a',
+              border: '2px solid #b3e0ff',
+              borderRadius: '2px', 
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textTransform: 'uppercase',
+              letterSpacing: '2px',
+              boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+              borderRadius: '20px',
+            }}
+            onMouseOver={e => {
+              e.target.style.background = 'linear-gradient(to bottom,rgb(18, 155, 223), #e6f7ff)';
+              e.target.style.borderColor = '#80ccff';
+              e.target.style.transform = 'translateY(-2px)';
+            }}
+            onMouseOut={e => {
+              e.target.style.background = 'linear-gradient(to bottom,rgb(10, 150, 214), #ffffff)';
+              e.target.style.borderColor = '#b3e0ff';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            Play
+          </button>
+        </div>
       ) : (
         <SceneComponent scenes={scenes} />
-      )}
-      {/* <SceneComponent
-        scenes={scenes}
-      /> */}
-     
+      )}     
      
     </main>
   );
