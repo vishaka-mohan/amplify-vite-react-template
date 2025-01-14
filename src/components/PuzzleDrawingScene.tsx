@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { AnalyzeDocumentCommand, FeatureType, TextractClient } from '@aws-sdk/client-textract';
-require('dotenv').config()
+
 
 interface PuzzleDrawingSceneProps {
   images: string[]; // Array of image URLs

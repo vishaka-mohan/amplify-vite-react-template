@@ -17,6 +17,7 @@
     "@aws-sdk/client-textract": "^3.726.1",
     "@aws-sdk/client-transcribe": "^3.726.1",
     "@aws-sdk/client-translate": "^3.726.1",
+    "@dotenvx/dotenvx": "^1.33.0",
     "aws-amplify": "^6.12.0",
     "dotenv": "^16.4.7",
     "react": "^18.2.0",

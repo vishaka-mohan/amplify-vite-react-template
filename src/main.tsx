@@ -6,6 +6,10 @@ import "./index.css";
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import '@aws-amplify/ui-react/styles.css';
+// import { loadEnv } from '@dotenvx/dotenvx';
+
+// // Load environment variables
+// loadEnv();
 
 Amplify.configure(outputs);
 Amplify.configure({
