@@ -3,7 +3,6 @@ import { TranscribeClient, StartTranscriptionJobCommand, LanguageCode, GetTransc
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
 import { uploadData } from 'aws-amplify/storage';
 import NextButton from "./NextButton";
-import ClipLoader from "react-spinners/ClipLoader";
 import { BounceLoader } from "react-spinners";
 
 const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ puzzle, onComplete }) => {
@@ -13,7 +12,8 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const audioChunks = useRef<Blob[]>([]);
-  const correctPhrase = 'apple'
+  const correctPhrase = 'apple';
+  console.log(puzzle)
   const pollTranscriptionJob = async (client: TranscribeClient, jobName: string) => {
     let jobStatus = "IN_PROGRESS";
     let result: any;

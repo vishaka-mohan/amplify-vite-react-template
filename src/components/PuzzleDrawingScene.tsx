@@ -17,7 +17,6 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
   const [isCorrect, setIsCorrect] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const textractClient = new TextractClient({
     region: "us-east-1", // e.g., "us-east-1"
@@ -41,8 +40,6 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
       console.log("blob", blob)
       // Convert Blob to ArrayBuffer
       const arrayBuffer = await blob.arrayBuffer();
-      const previewUrl = URL.createObjectURL(blob);
-        setImagePreview(previewUrl);
 
       // Prepare Textract parameters
       const params = {

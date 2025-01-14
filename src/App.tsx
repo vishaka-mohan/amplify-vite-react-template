@@ -250,7 +250,7 @@ function App() {
 
   useEffect(() => {
         // Reset state when the scene changes
-        const bgaudio = new Audio('./bgm.mp4'); // Replace with your audio file URL or blob
+        const bgaudio = new Audio('./bg_audio_new.mp4'); // Replace with your audio file URL or blob
         // Set the loop property to true
         bgaudio.loop = true;
         bgaudio.volume = 0.3;
@@ -325,7 +325,6 @@ function App() {
               background: 'linear-gradient(to right,rgb(6, 111, 160), #ffffff)',
               color: '#1a1a1a',
               border: '2px solid #b3e0ff',
-              borderRadius: '2px', 
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               textTransform: 'uppercase',
@@ -333,16 +332,7 @@ function App() {
               boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
               borderRadius: '20px',
             }}
-            onMouseOver={e => {
-              e.target.style.background = 'linear-gradient(to bottom,rgb(18, 155, 223), #e6f7ff)';
-              e.target.style.borderColor = '#80ccff';
-              e.target.style.transform = 'translateY(-2px)';
-            }}
-            onMouseOut={e => {
-              e.target.style.background = 'linear-gradient(to bottom,rgb(10, 150, 214), #ffffff)';
-              e.target.style.borderColor = '#b3e0ff';
-              e.target.style.transform = 'translateY(0)';
-            }}
+
           >
             Play
           </button>
