@@ -2,16 +2,18 @@ import React, { useRef, useState } from "react";
 import { TranscribeClient, StartTranscriptionJobCommand, LanguageCode, GetTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
 import { TranslateClient, TranslateTextCommand } from "@aws-sdk/client-translate";
 import { uploadData } from 'aws-amplify/storage';
+import NextButton from "./NextButton";
+import ClipLoader from "react-spinners/ClipLoader";
+import { BounceLoader } from "react-spinners";
 
 const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ puzzle, onComplete }) => {
   const [recording, setRecording] = useState(false);
-  const [transcription, setTranscription] = useState("");
-  const [translation, setTranslation] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
-  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [loading, setIsLoading] = useState(false);
   const audioChunks = useRef<Blob[]>([]);
-
+  const correctPhrase = 'apple'
   const pollTranscriptionJob = async (client: TranscribeClient, jobName: string) => {
     let jobStatus = "IN_PROGRESS";
     let result: any;
@@ -59,8 +61,9 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
       };
 
       recorder.onstop = async () => {
+        setIsLoading(true);
+        
         const blob = new Blob(audioChunks.current, { type: "audio/webm" });
-        setAudioBlob(blob);
         audioChunks.current = []; // Reset for next recording
         console.log("Audio recording completed.");
         console.log("audio blob", blob)
@@ -87,7 +90,7 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
       const jobName = `VoicePuzzle-${Date.now()}`
       const transcribeParams = {
         TranscriptionJobName: jobName,
-        LanguageCode: LanguageCode.EN_IN, // Japanese
+        LanguageCode: LanguageCode.JA_JP, // Japanese
         Media: {
           MediaFileUri: "s3://amplify-d2wew4f6nlbm6q-ma-gamedialogueaudiosbucket-tijyngkrqp1j/"+result.path,
         },
@@ -100,7 +103,6 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
       console.log("Transcription response:", transcribeResponse);
       const transcriptionResult = await pollTranscriptionJob(transcribeClient, jobName);
       console.log("Transcription result:", transcriptionResult);
-      setTranscription(transcriptionResult);
 
       // Translate the transcription
       const translateClient = new TranslateClient({ region: "us-east-2", credentials: {
@@ -108,15 +110,22 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
       secretAccessKey: import.meta.env.VITE_ACCESS_KEY || ""
       } });
       const translateCommand = new TranslateTextCommand({
-        SourceLanguageCode: "en",
-        TargetLanguageCode: "ja",
+        SourceLanguageCode: "ja",
+        TargetLanguageCode: "en",
         Text: transcriptionResult,
       });
 
       const translateResponse = await translateClient.send(translateCommand);
+      setIsLoading(false);
       const translatedText = translateResponse.TranslatedText || "";
       console.log("Translation:", translatedText);
-      setTranslation(translatedText);
+      if(translatedText.toLowerCase().includes(correctPhrase)){
+        setIsCorrect(true)
+
+      }else{
+        setErrorMessage("Incorrect password, please try again.")
+      }
+     
       
 
       // Check if the translation matches the expected answer
@@ -126,6 +135,7 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
     //     setErrorMessage("Incorrect chant. Please try again.");
     //   }
     } catch (error) {
+      setIsLoading(false);
       console.error("Error processing audio:", error);
       setErrorMessage("An error occurred. Please try again.");
     }
@@ -138,6 +148,7 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
       setMediaRecorder(recorder);
       setRecording(true);
     } catch (error) {
+      setIsLoading(false);
       console.error("Error accessing microphone:", error);
     }
   };
@@ -153,24 +164,56 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
 
   return (
     <div className="voice-puzzle-scene">
-      <h1>Puzzle: Chant the Spell</h1>
-      <p>{puzzle.textToAdd}</p>
-      <div>
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         {!recording ? (
           <button onClick={startRecording}>🎤 Start Recording</button>
         ) : (
           <button onClick={handleStopRecording}>⏹️ Stop Recording</button>
         )}
       </div>
-      {audioBlob && (
-        <>
-          <audio controls src={URL.createObjectURL(audioBlob)} />
-        </>
-      )}
-      {transcription && <p>Transcription: {transcription}</p>}
-      {translation && <p>Translation: {translation}</p>}
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      <button onClick={onComplete}>Next</button>
+
+      
+      {loading && (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '20px 0'
+  }}>
+       <BounceLoader
+       color="white"
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-tegggstid="loader"
+      />
+  </div>
+)}      
+
+
+
+
+      {isCorrect ? (
+        <NextButton onClick={onComplete} />)
+        : (<>      <h3 
+          style={{
+           color: 'white', 
+           textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+           fontSize: '1.4rem',
+           fontWeight: 500,
+           textAlign: 'center',
+           margin: '20px 0',
+           padding: '10px',
+           backgroundColor: 'rgba(0,0,0,0.3)',
+           borderRadius: '8px'
+         }}
+         >
+           {errorMessage}
+   
+         </h3></>)
+
+}
     </div>
   );
 };

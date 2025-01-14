@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { AnalyzeDocumentCommand, FeatureType, TextractClient } from '@aws-sdk/client-textract';
+import NextButton from './NextButton';
 
 
 interface PuzzleDrawingSceneProps {
@@ -53,6 +54,8 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
 
       // Send request to Textract
       const command = new AnalyzeDocumentCommand(params);
+      setErrorMessage('Loading...')
+      try{
       const response = await textractClient.send(command);
       console.log("response", response)
       if(response.Blocks && response.Blocks[2].Text?.toUpperCase() === 'FROST'){
@@ -63,12 +66,17 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
       }
       else{
         console.log("Incorrect Answer")
-        setErrorMessage('Incorrect Answer. Try again!')
+        setErrorMessage('Incorrect Answer. Please Try again!')
         setIsCorrect(false)
         
       }
 
       console.log("Textract Response of image:", response);
+    }
+    catch(error){
+      console.error("Error in Textract", error)
+      setErrorMessage('Invalid Input! Please try again')
+    }
     }, "image/png"); // Specify the image format (e.g., "image/png")
 
   };
@@ -111,7 +119,21 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
         justifyContent: 'center',
       }}
     >
-      <h3>{errorMessage}</h3>
+      <h3 
+       style={{
+        color: 'white', 
+        textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+        fontSize: '1.4rem',
+        fontWeight: 500,
+        textAlign: 'center',
+        margin: '20px 0',
+        padding: '10px',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        borderRadius: '8px'
+      }}
+      >
+        {errorMessage}
+      </h3>
 
       {/* Display the images */}
       <div className="images-container" style={{ display: 'flex', gap: '20px', marginBottom: '20px' }}>
@@ -119,12 +141,6 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
           <img key={index} src={image} alt={`Puzzle piece ${index + 1}`} style={{ width: '500px', height: '100px' }} />
         ))}
       </div>
-      {imagePreview && (
-        <div>
-          <h2>Canvas Drawing Preview</h2>
-          <img src={imagePreview} alt="User Drawing Preview" style={{ maxWidth: "100%", border: "1px solid gray" }} />
-        </div>
-      )}
       {/* Drawing tool */}
       
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -154,8 +170,31 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
             }}
           />
           <div style={{ marginTop: '10px' }}>
-            <button onClick={handleClearCanvas}>Clear</button>
-            <button onClick={handleSubmit} style={{ marginLeft: '10px' }}>
+            <button 
+              onClick={handleClearCanvas} 
+              style={{
+                background: 'linear-gradient(to right,rgb(27, 119, 142),rgb(6, 71, 83))',
+                border: 'none',
+                padding: '8px 16px',
+                color: 'white',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              Clear
+            </button>
+            <button 
+              onClick={handleSubmit} 
+              style={{
+                marginLeft: '10px',
+                background: 'linear-gradient(to right,rgb(17, 155, 58),rgb(8, 105, 45))',
+                border: 'none', 
+                padding: '8px 16px',
+                color: 'white',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
               Submit
             </button>
           </div>
@@ -163,7 +202,12 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
       
 
       {/* Next button (only if the answer is correct) */}
-      {isCorrect ? (<button onClick={onCorrectAnswer}>Next</button>) : (<></>)}
+      {isCorrect ? (
+
+        <NextButton onClick={onCorrectAnswer} />)
+        : (<></>)
+        
+        }
     </div>
   );
 };

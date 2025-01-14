@@ -4,13 +4,14 @@ import { Character } from '../models/CharacterModel';
 interface DialogueBoxProps {
     character: Character;
     dialogue: string;
-    audioUrl: string;
 }
 
 const DialogueBox: React.FC<DialogueBoxProps> = ({ dialogue, character }) => {
+  console.log("character is ",character);
+
   return (
     <div className="dialogue-box" style={{ 
-      position: 'absolute',
+      position: 'relative',
       bottom: '10%',
       width: '30%',
       left: character.position.x + (character.isLeftSide ? 300 : -400),
@@ -22,7 +23,7 @@ const DialogueBox: React.FC<DialogueBoxProps> = ({ dialogue, character }) => {
       padding: '15px',
       borderRadius: '20px',
       border: '2px solid white',
-      position: 'relative'
+
     }}>
       <div style={{
         content: '""',

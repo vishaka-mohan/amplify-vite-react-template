@@ -42,8 +42,8 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
     "- Date: 5 January 1999",
     "- I still miss you Naoto, my friend. I will definitely find out what happened to you at this village and how you disappeared. That is my promise to you. Rest in peace.",
     "- Villagers talk about past disappearances. They say the snow spirit is real?? I need to find out",
-    "- Chant: 'Beneath the frost, the heart endures; in snow’s embrace, we find our cure.'  Need to find out what this is",
-    "- Mr. Blacksmith was skeptical about the spirit but he does not want to talk about it. I can see a sign, a mural perhaps, hanging towards the back of his little shop. I have seen this mural at many places in this village. Is this kind of a village emblem or logo or something?"
+    "- Villagers suggested to offer apples to the snow spirit to fulfill our wishes",
+    "- Mr. Blacksmith was skeptical about the spirit but he does not want to talk about it. I can see a sign, a mural perhaps, hanging towards the back of his little shop. I have seen this mural at many places in this village. Is this kind of a village emblem or logo or something? When i asked about the murals, he mentioned about how this mural signifies the 2 sides of any object and how they both come together to give us the complete picture. "
   ];
 
     // const handleNext = () => {
@@ -136,10 +136,10 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
       // Show the first dialogue 2 seconds after characters appear
       const dialogueTimer = setTimeout(() => {
         setCurrentDialogueIndex(0);
-      }, 2000);
+      }, 1000);
 
       return () => clearTimeout(dialogueTimer);
-    }, 3000);
+    }, 1000);
 
     return () => {
         clearTimeout(characterTimer);
@@ -167,13 +167,25 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
     return (
         <div className={`scene ${fadeClass}`} style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh', width: '100vw'}}>
             {showNotebook ? <Notebook content={notebookContent} /> : <></>} 
-            <h1 style={{color: 'white'}}>{textToAdd}</h1>
-            <PuzzleDrawingScene
-        images={currentScene.images}
-        correctAnswer={currentScene.correctAnswer}
-        onCorrectAnswer={handleNext}
-      />
-        </div>
+            <div style={{marginTop: '50px'}}>
+              <h1 style={{
+                color: 'white', 
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                fontSize: '2rem',
+                fontWeight: 500,
+                textAlign: 'center',
+                margin: '20px 0',
+                padding: '10px',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                borderRadius: '8px'
+              }}>{textToAdd}</h1>
+              <PuzzleDrawingScene
+                images={currentScene.images}
+                correctAnswer={currentScene.correctAnswer}
+                onCorrectAnswer={handleNext}
+              />
+            </div>
+        </div>      
       
     );
   }
@@ -182,7 +194,17 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
     return (
         <div className={`scene ${fadeClass}`} style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100vh', width: '100vw'}}>
             {showNotebook ? <Notebook content={notebookContent} /> : <></>} 
-            <h1 style={{color: 'white'}}>{textToAdd}</h1>
+            <h1  style={{
+                color: 'white', 
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                fontSize: '2rem',
+                fontWeight: 500,
+                textAlign: 'center',
+                margin: '20px 0',
+                padding: '10px',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                borderRadius: '8px'
+              }}>{textToAdd}</h1>
             <VoicePuzzleScene puzzle={currentScene} onComplete={handleNext}/>
         </div>
       
@@ -210,7 +232,7 @@ const SceneComponent: React.FC<SceneProps> = ({ scenes }) => {
         <Character key={character.id} character={character} />
       ))}
     {currentDialogueIndex >= 0 && (
-      <DialogueBox character={getCharacterById(characters, dialogues[currentDialogueIndex].characterId)} dialogue={dialogues[currentDialogueIndex].text} audioUrl={audioUrls[currentDialogueIndex]} />
+      <DialogueBox character={getCharacterById(characters, dialogues[currentDialogueIndex].characterId)} dialogue={dialogues[currentDialogueIndex].text}  />
     )}
     {!isLastScene || !isLastDialogue ? (
       <NextButton onClick={handleNext} />

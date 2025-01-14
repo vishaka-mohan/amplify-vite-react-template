@@ -22,9 +22,6 @@ import { useEffect } from 'react';
 
 
 
-
-
-
 const scenes: any[] = [
   new Scene(
     'Scene_Intro',
@@ -50,9 +47,10 @@ const scenes: any[] = [
     'Scene_0',
     './scene_0.png',
     [
-      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 }, true),
+      new Character('char1', 'Yuki', YukiImage, { x: 10, y: 50 }, true),
       new Character('char2', 'Haru', HaruImage, { x: 1300, y: 450 },false),
       new Character('char3', 'Rei', ReiImage, { x: 1300, y: 50 },false),
+      new Character('char4', 'Old Villager', OldVillagerImage, { x: 10, y: 450 },true),
     ],
     [
       { characterId: 'char1', text: 'The journey was too tiresome, but I am super excited for the Frost festival!', dialoguePath: 'scene1/dialogue1.mp3' },
@@ -62,7 +60,10 @@ const scenes: any[] = [
       { characterId: 'char3', text: 'You two go ahead. I want to take a look around the village.', dialoguePath: 'scene1/dialogue5.mp3' },
       { characterId: 'char1', text: 'Oh.. Okay. Suit yourself, but don’t get lost.', dialoguePath: 'scene1/dialogue6.mp3' },
       { characterId: 'char3', text: 'I\'ll see you guys directly at the inn.', dialoguePath: 'scene1/dialogue7.mp3' },
-      { characterId: 'char2', text: 'Sure thing, see you!', dialoguePath: 'scene1/dialogue8.mp3' }
+      { characterId: 'char2', text: 'Sure thing, see you!', dialoguePath: 'scene1/dialogue8.mp3' },
+      { characterId: 'char4', text: 'You think the village is welcoming to strangers? You must first prove you are worthy to enter!!! ', dialoguePath: 'scene1/dialogue9.mp3' },
+      { characterId: 'char2', text: 'What do you mean? What do we have to do? ', dialoguePath: 'scene1/dialogue10.mp3' },
+      { characterId: 'char4', text: 'In the frosts embrace, balance lies in the sum of two. Begin with one, let it grow anew.Keep this in mind as you go ahead!', dialoguePath: 'scene1/dialogue11.mp3' }
     ],
     false
   ),
@@ -164,7 +165,7 @@ const scenes: any[] = [
     images: [
       './im5.png'
     ],
-    textToAdd: 'To enter the door, you need to decipher the password from the murals below and write it in the space below',
+    textToAdd: 'To proceed, you must decipher the hidden message in the mural below. Write the correct answer in the space provided.',
     correctAnswer: 'data:image/png;base64,...', // Replace with the actual correct answer
     showNotebook: true
   },
@@ -189,7 +190,7 @@ const scenes: any[] = [
   {
     type: 'voice-puzzle', // Custom type for the puzzle scene
     backgroundImage: './scene_9.png',
-    textToAdd: 'Only those who honor the spirit in its native tongue shall pass.',
+    textToAdd: 'Please the spirit by offering it what it desires in its native language. Say the password to proceed',
 
     showNotebook: true
   },
