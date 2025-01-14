@@ -81,8 +81,8 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
           try {
       // Transcribe the recorded audio
       const transcribeClient = new TranscribeClient({ region: "us-east-2",credentials: {
-        accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID || "",
-        secretAccessKey: process.env.REACT_APP_ACCESS_KEY || ""
+        accessKeyId: import.meta.env.VITE_ACCESS_KEY_ID || "",
+        secretAccessKey: import.meta.env.VITE_ACCESS_KEY || ""
       }});
       const jobName = `VoicePuzzle-${Date.now()}`
       const transcribeParams = {
@@ -104,8 +104,8 @@ const VoicePuzzleScene: React.FC<{ puzzle: any; onComplete: () => void }> = ({ p
 
       // Translate the transcription
       const translateClient = new TranslateClient({ region: "us-east-2", credentials: {
-        accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID || "",
-      secretAccessKey: process.env.REACT_APP_ACCESS_KEY || ""
+        accessKeyId: import.meta.env.VITE_ACCESS_KEY_ID || "",
+      secretAccessKey: import.meta.env.VITE_ACCESS_KEY || ""
       } });
       const translateCommand = new TranslateTextCommand({
         SourceLanguageCode: "en",

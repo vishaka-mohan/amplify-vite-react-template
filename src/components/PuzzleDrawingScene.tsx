@@ -21,8 +21,8 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
   const textractClient = new TextractClient({
     region: "us-east-1", // e.g., "us-east-1"
     credentials: {
-      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID || "",
-      secretAccessKey: process.env.REACT_APP_ACCESS_KEY || ""
+      accessKeyId: import.meta.env.VITE_ACCESS_KEY_ID || "",
+      secretAccessKey: import.meta.env.VITE_ACCESS_KEY || ""
     },
   });
 
@@ -86,7 +86,7 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
   };
   useEffect(() => {
     // Ensure the canvas background is white when the component mounts
-    console.log("Access key id" + process.env.REACT_APP_ACCESS_KEY_ID)
+    //console.log("Access key id" + process.env.REACT_APP_ACCESS_KEY_ID)
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
