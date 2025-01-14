@@ -86,6 +86,7 @@ const PuzzleDrawingScene: React.FC<PuzzleDrawingSceneProps> = ({
   };
   useEffect(() => {
     // Ensure the canvas background is white when the component mounts
+    console.log("Access key id" + process.env.REACT_APP_ACCESS_KEY_ID)
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
