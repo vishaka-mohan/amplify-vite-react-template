@@ -48,8 +48,8 @@ const scenes: any[] = [
     './scene_0.png',
     [
       new Character('char1', 'Yuki', YukiImage, { x: 10, y: 50 }, true),
-      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 450 },false),
-      new Character('char3', 'Rei', ReiImage, { x: 1300, y: 50 },false),
+      new Character('char2', 'Haru', HaruImage, { x: 1100, y: 450 },false),
+      new Character('char3', 'Rei', ReiImage, { x: 1100, y: 50 },false),
       new Character('char4', 'Old Villager', OldVillagerImage, { x: 10, y: 450 },true),
     ],
     [
@@ -81,7 +81,7 @@ const scenes: any[] = [
     './scene_2.png',
     [
       new Character('char1', 'Innkeeper', InnkeeperImage, { x: 10, y: 250 },true),
-      new Character('char2', 'OldVillager', OldVillagerImage, { x: 1300, y: 250 },false)
+      new Character('char2', 'OldVillager', OldVillagerImage, { x: 1100, y: 250 },false)
     ],
     [
       { characterId: 'char1', text: 'The frost festival is finally here, I do not feel too good about this.', dialoguePath: 'scene2/dialogue1.mp3'},
@@ -101,7 +101,7 @@ const scenes: any[] = [
     './scene_3.png',
     [
       new Character('char1', 'Blacksmith', BlacksmithImage, { x: 10, y: 250 },true),
-      new Character('char2', 'Rei', ReiImage, { x: 1300, y: 250 },false)
+      new Character('char2', 'Rei', ReiImage, { x: 1100, y: 250 },false)
     ],
     [
       { characterId: 'char2', text: 'I was looking for some answers.. do you believe that the so-called frost spirit is real?', dialoguePath: 'scene3/dialogue1.mp3' },
@@ -118,7 +118,7 @@ const scenes: any[] = [
     [
       new Character('char1', 'Yuki', YukiImage, { x: 10, y: 50 },true),
       new Character('char2', 'Haru', HaruImage, { x: 10, y: 450 },true),
-      new Character('char3', 'InnKeeper', InnkeeperImage, { x: 1300, y: 250 },false),
+      new Character('char3', 'InnKeeper', InnkeeperImage, { x: 1100, y: 250 },false),
       
     ],
     [
@@ -135,7 +135,7 @@ const scenes: any[] = [
     './scene_5.png',
     [
       new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 },true),
-      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 250 },false),
+      new Character('char2', 'Haru', HaruImage, { x: 1100, y: 250 },false),
     ],
     [
       { characterId: 'char1', text: 'Looks like he did not come back.', dialoguePath: 'scene5/dialogue1.mp3' },
@@ -149,7 +149,7 @@ const scenes: any[] = [
     './scene_6.png',
     [
       new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 },true),
-      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 250 },false),
+      new Character('char2', 'Haru', HaruImage, { x: 1100, y: 250 },false),
     ],
     [
       { characterId: 'char1', text: 'Rei had stuff written in this notebook about this shrine and the village... So he is here because he wants to find his old friend. This place looks so creepy. I have a very bad feeling about this!', dialoguePath: 'scene6/dialogue1.mp3' },
@@ -174,7 +174,7 @@ const scenes: any[] = [
     './scene_8.png',
     [
       new Character('char1', 'Yuki', YukiImage, { x: 10, y: 250 },true),
-      new Character('char2', 'Haru', HaruImage, { x: 1300, y: 250 },false),
+      new Character('char2', 'Haru', HaruImage, { x: 1100, y: 250 },false),
     ],
     [
       { characterId: 'char1', text: 'This is such a dark chamber. Look around, there are so many books lying around!', dialoguePath: 'scene8/dialogue1.mp3' },
@@ -199,8 +199,8 @@ const scenes: any[] = [
     './scene_10.png',
     [
       new Character('char1', 'Rei', ReiImage, { x: 10, y: 250 },true),
-      new Character('char2', 'Yuki', YukiImage, { x: 1300, y: 450 },false),
-      new Character('char3', 'Haru', HaruImage, { x: 1300, y: 50 },false),
+      new Character('char2', 'Yuki', YukiImage, { x: 1100, y: 450 },false),
+      new Character('char3', 'Haru', HaruImage, { x: 1100, y: 50 },false),
     ],
     [
       { characterId: 'char2', text: 'We found Rei!! Rei, how did you end up here!?', dialoguePath: 'scene10/dialogue1.mp3' },
@@ -216,8 +216,8 @@ const scenes: any[] = [
     './scene_6.png',
     [
       new Character('char1', 'Rei', ReiImage, { x: 10, y: 250 },true),
-      new Character('char2', 'Kaede', KaedeImage, { x: 1300, y: 450 },false),
-      new Character('char3', 'Takeshi', TakeshiImage, { x: 1300, y: 50 },false),
+      new Character('char2', 'Kaede', KaedeImage, { x: 1100, y: 450 },false),
+      new Character('char3', 'Takeshi', TakeshiImage, { x: 1100, y: 50 },false),
     ],
     [
       { characterId: 'char1', text: 'We have found the truth! Let us leave the shrine.', dialoguePath: 'scene11/dialogue1.mp3' },
@@ -234,7 +234,7 @@ const scenes: any[] = [
     [
       new Character('char1', 'Rei', ReiImage, { x: 10, y: 50 },true),
       new Character('char2', 'Yuki', YukiImage, { x: 10, y: 450 },true),
-      new Character('char3', 'OldVillager', OldVillagerImage, { x: 1300, y: 250 },false),
+      new Character('char3', 'OldVillager', OldVillagerImage, { x: 1100, y: 250 },false),
     ],
     [
       { characterId: 'char3', text: 'What is this chatter about, people are talking about the snow spirit? Was all this just a story?', dialoguePath: 'scene12/dialogue1.mp3' },
